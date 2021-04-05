@@ -1,1 +1,1 @@
-# Next.js Starter Tailwind
+# Next.js Pokedex with Tailwind
