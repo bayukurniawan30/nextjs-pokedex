@@ -1,4 +1,6 @@
 import Image from "next/image";
+import Link from 'next/link'
+import Title from '@components/title'
 
 function IndexPage({ allData }) {
 	// cek data di console
@@ -8,23 +10,26 @@ function IndexPage({ allData }) {
 		<div>
 			<div className="relative bg-white overflow-hidden">
 				<div className="max-w-7xl mx-auto mt-10 mb-10">
-				<p class="text-center text-3xl font-bold text-gray-800 dark:text-white mb-10">
-					Pokedex
-				</p>
-
+					<Title></Title>
 					<div className="grid grid-cols-1 md:grid-cols-4 gap-8">
 						{/* Looping untuk menampilkan data pokemon */}
-						{allData.map(({ name, sprites, types }) => (
+						{allData.map(({ id, name, sprites, types }) => (
 						<div key={name}>
 							<div className="overflow-hidden shadow-lg hover:shadow-xl transition duration-500 ease-in-out rounded-lg h-90 cursor-pointer m-auto">
 								<a href="#" className="w-full block h-full">
-									<img alt={name} src={sprites.front_default} className="max-h-60 " width="100%"/>
+									<Link href={"/detail/" + id}>
+										<a><img alt={name} src={sprites.front_default} className="max-h-60 " width="100%"/></a>
+									</Link>
 									<div className="bg-white dark:bg-gray-800 w-full p-4">
 										<p className="text-indigo-500 text-md font-medium capitalize">
 											{types[0].type.name}
 										</p>
 										<p className="text-gray-800 dark:text-white text-xl font-medium mb-2 capitalize">
-											{name}
+											<Link href={"/detail/" + id}>
+												<a>
+													{name}
+												</a>
+											</Link>
 										</p>
 										<p className="text-gray-400 dark:text-gray-300 font-light text-md">
 											Blablabla
@@ -44,7 +49,7 @@ function IndexPage({ allData }) {
 
 export async function getStaticProps() {
 	// cari 8 data pokemon 
-	const res  = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=8')
+	const res  = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=32')
 	const data = await res.json();
 	const allData = [];
 
