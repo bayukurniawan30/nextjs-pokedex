@@ -2,7 +2,10 @@ import Image from "next/image";
 import Link from 'next/link'
 import Title from '@components/title'
 
-function IndexPage({ allData }) {
+function IndexPage({ allData, moreData }) {
+	console.log(allData);
+	console.log(moreData);
+
 	return (
 		<div>
 			<div className="relative bg-white overflow-hidden">
@@ -29,7 +32,7 @@ function IndexPage({ allData }) {
 											</Link>
 										</p>
 										<p className="text-gray-400 dark:text-gray-300 font-light text-md">
-											Blablabla
+											{moreData[id].flavor_text_entries[0].flavor_text}
 										</p>
 									</div>
 								</a>
@@ -48,25 +51,32 @@ export async function getStaticProps() {
 	// cari data pokemon
 
 	// set limitnya brapa
-	const limit = 40 
+	const limit = 20
 	// fetch pokemon API
 	const res  = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`)
 	// ubah data ke format json
 	const data = await res.json()
-	const allData = []
+	const allData  = []
+	const moreData = []
 
 	// masukkan data ke array yang baru
-	let count = 0
+	let count  = 0
+	let count2 = 0
 	for (const item of data.results) {
 		const pokeUrl  = await fetch(item.url);
 		const pokeData = await pokeUrl.json();
-		allData[count++] = pokeData;
+
+		const speciesUrl   = await fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokeData.name}`)
+		const speciesData  = await speciesUrl.json()
+		allData[count++]   = pokeData
+		moreData[count2++] = speciesData
 	}
   
 	// pass data ke IndexPage
 	return {
 		props: {
 			allData,
+			moreData
 		},
 	}
 }
