@@ -9,7 +9,7 @@ function MyApp({ Component, pageProps }) {
         <title>Pokédex</title>
         <meta
           name="Description"
-          content="A Next.js starter styled using Tailwind CSS."
+          content="Simple Pokédex with Nextjs"
         />
       </Head>
 

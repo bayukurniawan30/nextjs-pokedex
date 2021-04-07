@@ -1,6 +1,8 @@
 import { useRouter } from 'next/router'
+import Head from 'next/head'
 import Title from '@components/title'
 
+// set icon untuk stats
 function Icon(stat) {
     if (stat == 'hp') {
         return (
@@ -42,13 +44,16 @@ function Icon(stat) {
 }
 
 function Detail({ data }) {
-	// cek data di console
-	console.log(data);
-
+    // Hitung jumlah tipe yg dipunyain pokemon
     const typesLength = data.types.length;
 
 	return (
 		<div>
+            {/* Ganti judul page sesuai nama pokemon */}
+            <Head>
+                <title>#{data.id} {data.name.toUpperCase()} | Pokédex</title>
+            </Head>
+
 			<div className="relative bg-white overflow-hidden">
 				<div className="max-w-7xl mx-auto mt-10 mb-10">
                     <Title></Title>

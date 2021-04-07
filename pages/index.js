@@ -3,9 +3,6 @@ import Link from 'next/link'
 import Title from '@components/title'
 
 function IndexPage({ allData }) {
-	// cek data di console
-	console.log(allData);
-
 	return (
 		<div>
 			<div className="relative bg-white overflow-hidden">
@@ -48,13 +45,18 @@ function IndexPage({ allData }) {
 
 
 export async function getStaticProps() {
-	// cari 8 data pokemon 
-	const res  = await fetch('https://pokeapi.co/api/v2/pokemon/?limit=32')
-	const data = await res.json();
-	const allData = [];
+	// cari data pokemon
+
+	// set limitnya brapa
+	const limit = 151 
+	// fetch pokemon API
+	const res  = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`)
+	// ubah data ke format json
+	const data = await res.json()
+	const allData = []
 
 	// masukkan data ke array yang baru
-	let count = 0;
+	let count = 0
 	for (const item of data.results) {
 		const pokeUrl  = await fetch(item.url);
 		const pokeData = await pokeUrl.json();
