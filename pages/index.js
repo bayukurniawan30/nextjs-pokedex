@@ -3,8 +3,8 @@ import Link from 'next/link'
 import Title from '@components/title'
 
 function IndexPage({ allData, moreData }) {
-	console.log(allData);
-	console.log(moreData);
+	// console.log(allData);
+	// console.log(moreData);
 
 	return (
 		<div>
@@ -32,7 +32,7 @@ function IndexPage({ allData, moreData }) {
 											</Link>
 										</p>
 										<p className="text-gray-400 dark:text-gray-300 font-light text-md">
-											{moreData[id].flavor_text_entries[0].flavor_text}
+											{moreData[id - 1].flavor_text_entries[0].flavor_text}
 										</p>
 									</div>
 								</a>
