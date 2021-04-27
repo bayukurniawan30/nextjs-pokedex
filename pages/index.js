@@ -51,7 +51,7 @@ export async function getStaticProps() {
 	// cari data pokemon
 
 	// set limitnya brapa
-	const limit = 20
+	const limit = 151
 	// fetch pokemon API
 	const res  = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`)
 	// ubah data ke format json
