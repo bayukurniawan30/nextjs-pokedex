@@ -46,7 +46,7 @@ function IndexPage({ allData, moreData }) {
 	);
 }
 
-
+// fetch data dengan getStaticProps
 export async function getStaticProps() {
 	// cari data pokemon
 
