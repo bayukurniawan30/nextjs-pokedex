@@ -1,7 +1,7 @@
 {
-  "name": "next-starter-tailwind",
-  "version": "2.0.0",
-  "description": "Next.js starter styled with Tailwind CSS",
+  "name": "next-pokedex",
+  "version": "1.0.0",
+  "description": "Next.js Pokedex with Tailwindcss",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/taylorbryant/next-starter-tailwind.git"
+    "url": "git+https://github.com/bayukurniawan30/nextjs-pokedex.git"
   },
-  "author": "Taylor Bryant",
+  "author": "Bayu Kurniawan",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/taylorbryant/next-starter-tailwind/issues"
+    "url": "https://github.com/bayukurniawan30/nextjs-pokedex/issues"
   },
-  "homepage": "https://github.com/taylorbryant/next-starter-tailwind#readme",
+  "homepage": "https://github.com/bayukurniawan30/nextjs-pokedex#readme",
   "dependencies": {
     "next": "10.0.4",
     "react": "17.0.1",
