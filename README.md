@@ -17,7 +17,7 @@ Halaman `index.js` me-load 151 Pokemon dengan `getStaticProps` dan akan me-load 
 
 Clone repositori ini dengan perintah
 ```
-git clone https://ricostacruz.com/nprogress/
+git clone https://github.com/bayukurniawan30/nextjs-pokedex.git
 ```
 Atau dengan download repositori ini dalam format zip.
 
