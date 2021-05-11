@@ -20,6 +20,7 @@
   "homepage": "https://github.com/bayukurniawan30/nextjs-pokedex#readme",
   "dependencies": {
     "next": "10.0.4",
+    "nprogress": "^0.2.0",
     "react": "17.0.1",
     "react-dom": "17.0.1"
   },
