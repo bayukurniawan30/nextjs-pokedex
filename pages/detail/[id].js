@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import Head from 'next/head'
 import Title from '@components/title'
 
@@ -43,7 +42,7 @@ function Icon(stat) {
     }
 }
 
-function Detail({ data }) {
+function Detail({ data }) {    
     // Hitung jumlah tipe yg dipunyain pokemon
     const typesLength = data.types.length;
 
@@ -71,9 +70,9 @@ function Detail({ data }) {
                                 <ul className="mt-10">
                                     {data.stats.map(({ stat, base_stat }) => (
                                     <li key={stat.name} className="mb-6">
-                                        <div className="flex">
+                                        <div className="group flex">
                                             <div className="flex-shrink-0">
-                                                <div className="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+                                                <div className="flex items-center justify-center h-12 w-12 transition duration-500 ease-in-out rounded-md group-hover:bg-white group-hover:text-indigo-500 bg-indigo-500 text-white border border-transparent group-hover:border-indigo-500">
                                                     {Icon(stat.name)}
                                                 </div>
                                             </div>
@@ -91,7 +90,7 @@ function Detail({ data }) {
                                 </ul>
                             </div>
                             <div className="mt-10 -mx-4 md:-mx-12 relative lg:mt-0 lg:col-start-1">
-                                <img src={data.sprites.front_default} alt="illustration" className="relative mx-auto shadow-lg rounded w-80"/>
+                                <img src={data.sprites.front_default} alt="illustration" className="relative mx-auto shadow-lg border border-gray-100 hover:border-indigo-500 transition duration-500 ease-in-out rounded w-80"/>
                             </div>
                         </div>
                     </div>
@@ -101,29 +100,29 @@ function Detail({ data }) {
 	);
 }
 
-export async function getStaticPaths() {
-	// cari detail data pokemon 
-	const res     = await fetch("https://pokeapi.co/api/v2/pokemon/")
-	const data    = await res.json();
-    const allData = [];
+// export async function getStaticPaths() {
+// 	// cari detail data pokemon 
+// 	const res     = await fetch("https://pokeapi.co/api/v2/pokemon/")
+// 	const data    = await res.json();
+//     const allData = [];
 
-	// masukkan data ke array yang baru
-	let count = 0;
-	for (const item of data.results) {
-		const pokeUrl  = await fetch(item.url);
-		const pokeData = await pokeUrl.json();
-		allData[count++] = pokeData;
-	}
+// 	// masukkan data ke array yang baru
+// 	let count = 0;
+// 	for (const item of data.results) {
+// 		const pokeUrl  = await fetch(item.url);
+// 		const pokeData = await pokeUrl.json();
+// 		allData[count++] = pokeData;
+// 	}
 
 
-	const paths = allData.map((pokemon) => ({
-        params: { id: pokemon.id.toString() },
-    }))
+// 	const paths = allData.map((pokemon) => ({
+//         params: { id: pokemon.id.toString() },
+//     }))
     
-    return { paths, fallback: false }
-}
+//     return { paths, fallback: false }
+// }
 
-export async function getStaticProps({ params }) {
+export async function getServerSideProps({ params }) {
     const res  = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`)
     const data = await res.json()
   

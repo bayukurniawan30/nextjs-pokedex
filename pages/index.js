@@ -15,28 +15,31 @@ function IndexPage({ allData, moreData }) {
 						{/* Looping untuk menampilkan data pokemon */}
 						{allData.map(({ id, name, sprites, types }) => (
 							<div key={name}>
-								<div className="overflow-hidden shadow-lg hover:shadow-xl transition duration-500 ease-in-out rounded-lg h-90 cursor-pointer m-auto">
-									<div className="w-full block h-full">
-										<Link href={"/detail/" + id}>
-											<a><img alt={name} src={sprites.front_default} className="w-80 " width="100%" /></a>
-										</Link>
-										<div className="bg-white dark:bg-gray-800 w-full p-4">
-											<p className="text-indigo-500 text-md font-medium capitalize">
-												{types[0].type.name}
-											</p>
-											<p className="text-gray-800 dark:text-white text-xl font-medium mb-2 capitalize">
-												<Link href={"/detail/" + id}>
-													<a>
+								<Link href={"/detail/" + id}>
+									<a>
+										<div className="overflow-hidden shadow-lg hover:shadow-xl border border-gray-100 hover:border-indigo-500 transition duration-500 ease-in-out rounded-lg h-90 cursor-pointer m-auto transform hover:scale-105">
+											<div className="w-full block h-full">
+												<img alt={name} src={sprites.front_default} className="w-80 " width="100%" />
+												<div className="bg-white dark:bg-gray-800 w-full p-4">
+													<div className="text-indigo-500 text-md font-medium">
+														{/* {types[0].type.name} */}
+														{/* {JSON.stringify(types)} */}
+														{types.map((type) => (
+															<span className="capitalize" key={type.type.name}>{type.type.name} {types.length === type.slot ? "" : ' - '}</span>
+														))}
+													</div>
+													<p className="text-gray-800 dark:text-white text-xl font-medium mb-2 capitalize">
 														#{id} {name}
-													</a>
-												</Link>
-											</p>
-											<p className="text-gray-400 dark:text-gray-300 font-light text-md">
-												{moreData[id - 1].flavor_text_entries[0].flavor_text}
-											</p>
+													</p>
+															
+													<p className="text-gray-400 dark:text-gray-300 font-light text-md">
+														{moreData[id - 1].flavor_text_entries[0].flavor_text}
+													</p>
+												</div>
+											</div>
 										</div>
-									</div>
-								</div>
+									</a>
+								</Link>
 							</div>
 						))}
 					</div>
@@ -46,8 +49,8 @@ function IndexPage({ allData, moreData }) {
 	);
 }
 
-// fetch data dengan getServerSideProps
-export async function getServerSideProps() {
+// fetch data dengan getStaticProps
+export async function getStaticProps() {
 	// cari data pokemon
 
 	// set limitnya brapa
