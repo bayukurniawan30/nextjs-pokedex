@@ -127,7 +127,7 @@ function Detail({ data }) {
 
 export async function getServerSideProps({ params }) {
 	const limit = process.env.POKEMON_LIMIT
-    const res   = await fetch(`https: //pokeapi.co/api/v2/pokemon/${params.id}`)
+    const res   = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`)
     const data  = await res.json()
   
     if (!data || params.id > limit) {
