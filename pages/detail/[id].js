@@ -56,10 +56,10 @@ function Detail({ data }) {
 
             <DarkModeBtn></DarkModeBtn>
 
-			<div className="relative bg-white overflow-hidden">
+			<div className="relative overflow-hidden">
 				<div className="max-w-7xl mx-auto mt-10 mb-10">
                     <Title></Title>
-                    <div className="relative bg-white dark:bg-gray-800 p-4">
+                    <div className="relative p-4">
                         <div className="lg:grid lg:grid-flow-row-dense lg:grid-cols-2 lg:gap-12 lg:items-center">
                             <div className="lg:col-start-2 md:pl-20">
                                 <p className="text-indigo-500 text-md font-medium capitalize">
@@ -75,7 +75,7 @@ function Detail({ data }) {
                                     <li key={stat.name} className="mb-6">
                                         <div className="group flex">
                                             <div className="flex-shrink-0">
-                                                <div className="flex items-center justify-center h-12 w-12 transition duration-500 ease-in-out rounded-md group-hover:bg-white group-hover:text-indigo-500 bg-indigo-500 text-white border border-transparent group-hover:border-indigo-500">
+                                                <div className="flex items-center justify-center h-12 w-12 transition duration-500 ease-in-out rounded-md group-hover:bg-white dark:group-hover:bg-gray-900 group-hover:text-indigo-500 dark:group-hover:text-white bg-indigo-500 text-white border border-transparent group-hover:border-indigo-500 dark:group-hover:border-white">
                                                     {Icon(stat.name)}
                                                 </div>
                                             </div>
@@ -93,7 +93,7 @@ function Detail({ data }) {
                                 </ul>
                             </div>
                             <div className="mt-10 -mx-4 md:-mx-12 relative lg:mt-0 lg:col-start-1">
-                                <img src={data.sprites.front_default} alt="illustration" className="relative mx-auto shadow-lg border border-gray-100 hover:border-indigo-500 transition duration-500 ease-in-out rounded w-80"/>
+                                <img src={data.sprites.front_default} alt="illustration" className="relative mx-auto shadow-lg border border-gray-100 dark:border-transparent hover:border-indigo-500 dark:hover:border-indigo-500 transition duration-500 ease-in-out rounded w-80"/>
                             </div>
                         </div>
                     </div>

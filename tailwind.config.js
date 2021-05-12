@@ -1,5 +1,5 @@
 module.exports = {
   purge: ["./components/**/*.js", "./pages/**/*.js"],
-  dark: 'class',
+  darkMode: 'class',
   variants: {},
 };

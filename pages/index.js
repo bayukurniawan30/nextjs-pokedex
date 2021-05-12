@@ -11,7 +11,7 @@ function IndexPage({ allData, moreData }) {
 		<div>
 			<DarkModeBtn></DarkModeBtn>
 
-			<div className="relative bg-white dark:bg-gray-900 overflow-hidden">
+			<div className="relative overflow-hidden">
 				<div className="max-w-7xl mx-auto mt-10 mb-10">
 					<Title></Title>
 					<div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -23,7 +23,7 @@ function IndexPage({ allData, moreData }) {
 										<div className="overflow-hidden shadow-lg hover:shadow-xl border border-gray-100 hover:border-indigo-500 transition duration-500 ease-in-out rounded-lg h-90 cursor-pointer m-auto transform hover:scale-105">
 											<div className="w-full block h-full">
 												<img alt={name} src={sprites.front_default} className="w-80 " width="100%" />
-												<div className="bg-white dark:bg-gray-800 w-full p-4">
+												<div className="w-full p-4">
 													<div className="text-indigo-500 text-md font-medium">
 														{/* {types[0].type.name} */}
 														{/* {JSON.stringify(types)} */}
