@@ -2,6 +2,7 @@ import "../css/style.css";
 import Head from "next/head";
 import Router from 'next/router';
 import Layout from "@components/layout";
+import { ThemeProvider } from 'next-themes'
 import NProgress from "nprogress";
 import "nprogress/nprogress.css";
 
@@ -18,17 +19,19 @@ Router.events.on('routeChangeError', () => NProgress.done());
 
 function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Head>
-        <title>Pokédex</title>
-        <meta
-          name="Description"
-          content="Simple Pokédex with Nextjs"
-        />
-      </Head>
+    <ThemeProvider attribute="class">
+      <Layout>
+        <Head>
+          <title>Pokédex</title>
+          <meta
+            name="Description"
+            content="Simple Pokédex with Nextjs"
+          />
+        </Head>
 
-      <Component {...pageProps} />
-    </Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ThemeProvider>
   );
 }
 

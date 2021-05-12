@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import Title from '@components/title'
+import DarkModeBtn from '@components/dark_mode_btn'
 
 // set icon untuk stats
 function Icon(stat) {
@@ -52,6 +53,8 @@ function Detail({ data }) {
             <Head>
                 <title>#{data.id} {data.name.toUpperCase()} | Pokédex</title>
             </Head>
+
+            <DarkModeBtn></DarkModeBtn>
 
 			<div className="relative bg-white overflow-hidden">
 				<div className="max-w-7xl mx-auto mt-10 mb-10">
@@ -123,9 +126,16 @@ function Detail({ data }) {
 // }
 
 export async function getServerSideProps({ params }) {
-    const res  = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`)
-    const data = await res.json()
+	const limit = process.env.POKEMON_LIMIT
+    const res   = await fetch(`https: //pokeapi.co/api/v2/pokemon/${params.id}`)
+    const data  = await res.json()
   
+    if (!data || params.id > limit) {
+        return {
+            notFound: true,
+        }
+    }
+
     return { props: { data } }
   }
 

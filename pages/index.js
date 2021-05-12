@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from 'next/link'
 import Title from '@components/title'
+import DarkModeBtn from '@components/dark_mode_btn'
 
 function IndexPage({ allData, moreData }) {
 	// console.log(allData);
@@ -8,7 +9,9 @@ function IndexPage({ allData, moreData }) {
 
 	return (
 		<div>
-			<div className="relative bg-white overflow-hidden">
+			<DarkModeBtn></DarkModeBtn>
+
+			<div className="relative bg-white dark:bg-gray-900 overflow-hidden">
 				<div className="max-w-7xl mx-auto mt-10 mb-10">
 					<Title></Title>
 					<div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -54,7 +57,7 @@ export async function getStaticProps() {
 	// cari data pokemon
 
 	// set limitnya brapa
-	const limit = 151
+	const limit = process.env.POKEMON_LIMIT
 	// fetch pokemon API
 	const res = await fetch(`https://pokeapi.co/api/v2/pokemon/?limit=${limit}`)
 	// ubah data ke format json
