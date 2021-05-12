@@ -1,4 +1,6 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
+import ReactTooltip from 'react-tooltip';
 import Title from '@components/title'
 import DarkModeBtn from '@components/dark_mode_btn'
 
@@ -99,6 +101,8 @@ function Detail({ data }) {
                     </div>
 				</div>
 			</div>
+            <ReactTooltip html={true} />
+
 		</div>
 	);
 }
@@ -129,14 +133,8 @@ export async function getServerSideProps({ params }) {
 	const limit = process.env.POKEMON_LIMIT
     const res   = await fetch(`https://pokeapi.co/api/v2/pokemon/${params.id}`)
     const data  = await res.json()
-  
-    if (!data || params.id > limit) {
-        return {
-            notFound: true,
-        }
-    }
 
     return { props: { data } }
-  }
+}
 
 export default Detail

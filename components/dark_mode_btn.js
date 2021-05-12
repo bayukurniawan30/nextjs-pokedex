@@ -1,7 +1,13 @@
+import { useState, useEffect } from 'react';
 import {useTheme} from 'next-themes'
 
 export default function DarkModeBtn() {
-    const {theme, setTheme} = useTheme()
+    const [mounted, setMounted] = useState(false)
+    const {theme, setTheme}     = useTheme()
+
+    useEffect(() => setMounted(true), [])
+
+    if (!mounted) return null
 
     return (
         <div className="fixed z-20 bottom-2 right-2 cursor-pointer">
