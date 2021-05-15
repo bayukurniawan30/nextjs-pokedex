@@ -25,7 +25,7 @@ function MyApp({ Component, pageProps }) {
           <title>Pokédex</title>
           <meta
             name="Description"
-            content="Simple Pokédex with Nextjs"
+            content="Simple Pokédex with Nextjs and Tailwindcss"
           />
         </Head>
 
